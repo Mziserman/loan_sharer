@@ -1,0 +1,6 @@
+<table>
+  <%= render 'loans/partials/head' %>
+  <% timetable.lender_timetable.terms.each do |term| %>
+    <%= render 'loans/partials/term', term: term %>
+  <% end %>
+</table>
