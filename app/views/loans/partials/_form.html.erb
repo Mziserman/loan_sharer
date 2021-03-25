@@ -1,7 +1,7 @@
 <br />
 <%= form_with method: :get do |form| %>
   <%= form.label :period %>
-  <%= form.text_field :period, value: @params[:period] %>
+  <%= form.select :period, %w[month quarter semester year], value: @params[:period] %>
   <br />
   <%= form.label :amount %>
   <%= form.number_field :amount, value: @params[:amount] %>
