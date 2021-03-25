@@ -1,25 +1,18 @@
 class LoansController < ApplicationController
-  def standard
-    @timetable = LoanCreator::Standard.new(**fix_params_type)
-    render :show
+  def show
+    begin
+      @params = fix_params_type(permitted_params)
+      yield
+      @terms = @timetable.lender_timetable.terms
+    rescue ArgumentError => e
+      @params = {initial_values:{}}
+      @terms = []
+    end
   end
 
-  def in_fine
-    @timetable = LoanCreator::InFine.new(**fix_params_type)
-    render :show
+  def hash
+    Base64.urlsafe_encode64(permitted_params.to_json)
   end
-
-  def linear
-    @timetable = LoanCreator::Linear.new(**fix_params_type)
-    render :show
-  end
-
-  def bullet
-    @timetable = LoanCreator::Bullet.new(**fix_params_type)
-    render :show
-  end
-
-  private
 
   def permitted_params
     params.permit(
@@ -38,23 +31,43 @@ class LoansController < ApplicationController
     )
   end
 
-  def fix_params_type
+  def fix_params_type(params)
     {}.tap do |h|
-      h[:period] = permitted_params[:period].to_sym unless permitted_params[:period].nil?
-      h[:amount] = permitted_params[:amount].to_f unless permitted_params[:amount].nil?
-      h[:annual_interests_rate] = permitted_params[:annual_interests_rate].to_f unless permitted_params[:annual_interests_rate].nil?
-      h[:starts_on] = DateTime.parse(permitted_params[:starts_on]) unless permitted_params[:starts_on].nil?
-      h[:duration_in_periods] = permitted_params[:duration_in_periods].to_i unless permitted_params[:duration_in_periods].nil?
-      if permitted_params[:initial_values].present?
+      h[:period] = params[:period].to_sym unless params[:period].nil?
+      h[:amount] = params[:amount].to_f unless params[:amount].nil?
+      h[:annual_interests_rate] = params[:annual_interests_rate].to_f unless params[:annual_interests_rate].nil?
+      h[:starts_on] = Date.parse(params[:starts_on]) unless params[:starts_on].nil?
+      h[:duration_in_periods] = params[:duration_in_periods].to_i unless params[:duration_in_periods].nil?
+      if params[:initial_values].present?
         h[:initial_values] = {}.tap do |ivh|
-          ivh[:paid_capital] = permitted_params[:initial_values][:paid_capital].to_f unless permitted_params[:initial_values][:paid_capital].nil?
-          ivh[:paid_interests] = permitted_params[:initial_values][:paid_interests].to_f unless permitted_params[:initial_values][:paid_interests].nil?
-          ivh[:accrued_delta_interests] = permitted_params[:initial_values][:accrued_delta_interests].to_f unless permitted_params[:initial_values][:accrued_delta_interests].nil?
-          ivh[:due_interests] = permitted_params[:initial_values][:due_interests].to_f unless permitted_params[:initial_values][:due_interests].nil?
-          ivh[:starting_index] = permitted_params[:initial_values][:starting_index].to_i unless permitted_params[:initial_values][:starting_index].nil?
+          ivh[:paid_capital] = params[:initial_values][:paid_capital].to_f unless params[:initial_values][:paid_capital].nil?
+          ivh[:paid_interests] = params[:initial_values][:paid_interests].to_f unless params[:initial_values][:paid_interests].nil?
+          ivh[:accrued_delta_interests] = params[:initial_values][:accrued_delta_interests].to_f unless params[:initial_values][:accrued_delta_interests].nil?
+          ivh[:due_interests] = params[:initial_values][:due_interests].to_f unless params[:initial_values][:due_interests].nil?
+          ivh[:starting_index] = params[:initial_values][:starting_index].to_i unless params[:initial_values][:starting_index].nil?
         end
       end
     end
+  end
+
+  def encrypt_params
+    URI.encode({
+      p: params[:period],
+      a: params[:amount],
+      r: params[:annual_interests_rate],
+      d: params[:duration_in_periods],
+      pc: params.dig(:initial_values, :paid_capital),
+      pi: params.dig(:initial_values, :paid_interests),
+      ac: params.dig(:initial_values, :accrued_delta_interests),
+      di: params.dig(:initial_values, :due_interests),
+      si: params.dig(:initial_values, :starting_index),
+    }.to_json)
+  end
+
+  def decrypt_params
+    JSON.parse(
+      Base64.decode64(params.permit(:hash))
+    )
   end
 end
 

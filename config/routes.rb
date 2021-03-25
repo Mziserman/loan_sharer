@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resource :loans do
-    get :bullet
-    get :in_fine
-    get :standard
-    get :linear
-  end
+  resource :bullet, only: :show
+  resource :in_fine, only: :show
+  resource :standard, only: :show
+  resource :linear, only: :show
 
 end
