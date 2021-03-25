@@ -47,13 +47,15 @@ class LoansController < ApplicationController
       h[:duration_in_periods] = permitted_params[:duration_in_periods].to_i unless permitted_params[:duration_in_periods].nil?
       if permitted_params[:initial_values].present?
         h[:initial_values] = {}.tap do |ivh|
-          ivh[:paid_capital] = permitted_params[:paid_capital].to_f unless permitted_params[:paid_capital].nil?
-          ivh[:paid_interests] = permitted_params[:paid_interests].to_f unless permitted_params[:paid_interests].nil?
-          ivh[:accrued_delta_interests] = permitted_params[:accrued_delta_interests].to_f unless permitted_params[:accrued_delta_interests].nil?
-          ivh[:due_interests] = permitted_params[:due_interests].to_f unless permitted_params[:due_interests].nil?
-          ivh[:starting_index] = permitted_params[:starting_index].to_i unless permitted_params[:starting_index].nil?
+          ivh[:paid_capital] = permitted_params[:initial_values][:paid_capital].to_f unless permitted_params[:initial_values][:paid_capital].nil?
+          ivh[:paid_interests] = permitted_params[:initial_values][:paid_interests].to_f unless permitted_params[:initial_values][:paid_interests].nil?
+          ivh[:accrued_delta_interests] = permitted_params[:initial_values][:accrued_delta_interests].to_f unless permitted_params[:initial_values][:accrued_delta_interests].nil?
+          ivh[:due_interests] = permitted_params[:initial_values][:due_interests].to_f unless permitted_params[:initial_values][:due_interests].nil?
+          ivh[:starting_index] = permitted_params[:initial_values][:starting_index].to_i unless permitted_params[:initial_values][:starting_index].nil?
         end
       end
     end
   end
 end
+
+# exemple : http://localhost:3000/loans/bullet?period=month&amount=1000&annual_interests_rate=10&starts_on=2021-03-25T16:00:43+01:00&duration_in_periods=12&initial_values[due_interests]=100&initial_values[accrued_delta_interests=0]=100&&initial_values[paid_interests]=100&initial_values[paid_capital]=100
