@@ -27,5 +27,5 @@
   <%= form.label 'initial_values[paid_capital]' %>
   <%= form.number_field 'initial_values[paid_capital]', step: 0.01, value: @params[:initial_values][:paid_capital] %>
   <br />
-  <%= form.submit "generate" %>
+  <%= form.submit "generate", class: "bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded" %>
 <% end %>
