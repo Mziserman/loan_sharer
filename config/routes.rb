@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resource :standard, only: :show
   resource :linear, only: :show
 
+  root to: redirect('/standard')
 end
