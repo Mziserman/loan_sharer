@@ -4,10 +4,10 @@
   <%= form.select :period, %w[month quarter semester year], value: @params[:period] %>
   <br />
   <%= form.label :amount %>
-  <%= form.number_field :amount, value: @params[:amount] %>
+  <%= form.number_field :amount, step: 0.01, value: @params[:amount] %>
   <br />
   <%= form.label :annual_interests_rate %>
-  <%= form.number_field :annual_interests_rate, value: @params[:annual_interests_rate] %>
+  <%= form.number_field :annual_interests_rate, step: 0.01, value: @params[:annual_interests_rate] %>
   <br />
   <%= form.label :starts_on %>
   <%= form.date_field :starts_on, value: @params[:starts_on] %>
@@ -16,16 +16,16 @@
   <%= form.number_field :duration_in_periods, value: @params[:duration_in_periods] %>
   <br />
   <%= form.label 'initial_values[due_interests]' %>
-  <%= form.number_field 'initial_values[due_interests]', value: @params[:initial_values][:due_interests] %>
+  <%= form.number_field 'initial_values[due_interests]', step: 0.01, value: @params[:initial_values][:due_interests] %>
   <br />
   <%= form.label 'initial_values[accrued_delta_interests]' %>
-  <%= form.number_field 'initial_values[accrued_delta_interests]', value: @params[:initial_values][:accrued_delta_interests] %>
+  <%= form.number_field 'initial_values[accrued_delta_interests]', step: 0.0000001, value: @params[:initial_values][:accrued_delta_interests] %>
   <br />
   <%= form.label 'initial_values[paid_interests]' %>
-  <%= form.number_field 'initial_values[paid_interests]', value: @params[:initial_values][:paid_interests] %>
+  <%= form.number_field 'initial_values[paid_interests]', step: 0.01, value: @params[:initial_values][:paid_interests] %>
   <br />
   <%= form.label 'initial_values[paid_capital]' %>
-  <%= form.number_field 'initial_values[paid_capital]', value: @params[:initial_values][:paid_capital] %>
+  <%= form.number_field 'initial_values[paid_capital]', step: 0.01, value: @params[:initial_values][:paid_capital] %>
   <br />
   <%= form.submit "generate" %>
 <% end %>
