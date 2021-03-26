@@ -1,3 +1,29 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+label {
+  @apply block text-sm font-medium text-gray-700;
+}
+select {
+  @apply mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm;
+}
+th {
+  @apply text-left border-b-2 border-gray-300;
+}
+tr {
+  @apply bg-gray-100 border-b border-gray-200;
+}
+th, td {
+  @apply px-4 py-3;
+}
+input {
+  @apply mt-1 block w-full border-gray-300 rounded-md;
+}
+table {
+  @apply rounded-t-lg w-full bg-gray-200 text-gray-800;
+}
+.btn {
+  @apply bg-indigo-600 hover:bg-indigo-900 text-white font-bold py-3 px-6 rounded;
+}

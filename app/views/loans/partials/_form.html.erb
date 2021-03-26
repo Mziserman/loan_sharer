@@ -1,31 +1,44 @@
 <br />
 <%= form_with method: :get do |form| %>
-  <%= form.label :period %>
-  <%= form.select :period, %w[month quarter semester year], value: @params[:period] %>
-  <br />
-  <%= form.label :amount %>
-  <%= form.number_field :amount, step: 0.01, value: @params[:amount] %>
-  <br />
-  <%= form.label :annual_interests_rate %>
-  <%= form.number_field :annual_interests_rate, step: 0.01, value: @params[:annual_interests_rate] %>
-  <br />
-  <%= form.label :starts_on %>
-  <%= form.date_field :starts_on, value: @params[:starts_on] %>
-  <br />
-  <%= form.label :duration_in_periods %>
-  <%= form.number_field :duration_in_periods, value: @params[:duration_in_periods] %>
-  <br />
-  <%= form.label 'initial_values[due_interests]' %>
-  <%= form.number_field 'initial_values[due_interests]', step: 0.01, value: @params[:initial_values][:due_interests] %>
-  <br />
-  <%= form.label 'initial_values[accrued_delta_interests]' %>
-  <%= form.number_field 'initial_values[accrued_delta_interests]', step: 0.0000001, value: @params[:initial_values][:accrued_delta_interests] %>
-  <br />
-  <%= form.label 'initial_values[paid_interests]' %>
-  <%= form.number_field 'initial_values[paid_interests]', step: 0.01, value: @params[:initial_values][:paid_interests] %>
-  <br />
-  <%= form.label 'initial_values[paid_capital]' %>
-  <%= form.number_field 'initial_values[paid_capital]', step: 0.01, value: @params[:initial_values][:paid_capital] %>
-  <br />
-  <%= form.submit "generate", class: "bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded" %>
+  <div class="grid grid-cols-6 gap-2">
+    <div class="col-span-6 sm:col-span-3">
+      <%= form.label :amount %>
+      <%= form.number_field :amount, step: 0.01, value: @params[:amount], class: 'ainput' %>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <%= form.label :period %>
+      <%= form.select :period, %w[month quarter semester year], {value: @params[:period]} %>
+    </div>
+    <div class="col-span-6 sm:col-span-2">
+      <%= form.label :annual_interests_rate %>
+      <%= form.number_field :annual_interests_rate, step: 0.01, value: @params[:annual_interests_rate] %>
+    </div>
+    <div class="col-span-6 sm:col-span-2">
+      <%= form.label :starts_on %>
+      <%= form.date_field :starts_on, value: @params[:starts_on] %>
+    </div>
+    <div class="col-span-6 sm:col-span-2">
+      <%= form.label :duration_in_periods %>
+      <%= form.number_field :duration_in_periods, value: @params[:duration_in_periods] %>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <%= form.label 'initial_values[due_interests]' %>
+      <%= form.number_field 'initial_values[due_interests]', step: 0.01, value: @params[:initial_values][:due_interests] %>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <%= form.label 'initial_values[accrued_delta_interests]' %>
+      <%= form.number_field 'initial_values[accrued_delta_interests]', step: 0.0000001, value: @params[:initial_values][:accrued_delta_interests] %>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <%= form.label 'initial_values[paid_interests]' %>
+      <%= form.number_field 'initial_values[paid_interests]', step: 0.01, value: @params[:initial_values][:paid_interests] %>
+    </div>
+    <div class="col-span-6 sm:col-span-3">
+      <%= form.label 'initial_values[paid_capital]' %>
+      <%= form.number_field 'initial_values[paid_capital]', step: 0.01, value: @params[:initial_values][:paid_capital] %>
+    </div>
+
+    <%= form.submit "generate", class: "btn col-start-3 col-end-5" %>
+  </div>
+
 <% end %>
