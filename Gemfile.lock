@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/CapSens/loan-creator.git
-  revision: dfbe97d5b1c747499a632d2f76d617390c0ffbcf
+  revision: ff77b0231cca926ef29508d07bc03a66c39d3520
   branch: 10-integrate-view-form
   specs:
     loan_creator (0.8.0)
