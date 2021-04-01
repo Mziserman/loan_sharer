@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/CapSens/loan-creator.git
-  revision: 360cb4113918e83952527e2f66a31b3e2509ed18
+  revision: dfbe97d5b1c747499a632d2f76d617390c0ffbcf
   branch: 10-integrate-view-form
   specs:
     loan_creator (0.8.0)
@@ -115,6 +115,8 @@ GEM
     mini_portile2 (2.5.0)
     minitest (5.14.4)
     msgpack (1.4.2)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
     nio4r (2.5.7)
     nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
@@ -130,6 +132,8 @@ GEM
     rack (2.2.3)
     rack-mini-profiler (2.3.1)
       rack (>= 1.2.0)
+    rack-protection (2.1.0)
+      rack
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -165,6 +169,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
+    ruby2_keywords (0.0.4)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
