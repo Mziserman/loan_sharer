@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resource :linear, only: :show
 
   root to: redirect('/standard')
+
+  mount LoanCreator::Web => '/loan-creator'
 end
