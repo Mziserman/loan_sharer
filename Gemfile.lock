@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/CapSens/loan-creator.git
-  revision: ff77b0231cca926ef29508d07bc03a66c39d3520
-  branch: 10-integrate-view-form
+  revision: ff4b1cbe62171a1ee6324a1c99d286944e5b117f
+  branch: demo
   specs:
-    loan_creator (0.8.0)
+    loan_creator (0.8.1)
       activesupport
       bigdecimal
       sinatra

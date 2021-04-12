@@ -28,8 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-
-gem 'loan_creator', '>= 0.8', :github => 'CapSens/loan-creator', :branch => '10-integrate-view-form'
+gem 'loan_creator', '>= 0.8', :github => 'CapSens/loan-creator', :branch => 'demo'
 gem 'pry'
 
 group :development, :test do
