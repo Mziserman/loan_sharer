@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   root to: redirect('/standard')
 
-  mount LoanCreator::Web => '/loan-creator'
+  mount LoanCreatorWeb::App => '/loan-creator'
 end

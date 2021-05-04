@@ -1,12 +1,10 @@
 GIT
   remote: https://github.com/CapSens/loan-creator.git
-  revision: ff4b1cbe62171a1ee6324a1c99d286944e5b117f
-  branch: demo
+  revision: e842a1e847d52164448ab3f449827d9e45172678
   specs:
     loan_creator (0.8.1)
       activesupport
       bigdecimal
-      sinatra
 
 GEM
   remote: https://rubygems.org/
@@ -72,7 +70,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    bigdecimal (3.0.0)
+    bigdecimal (3.0.2)
     bindex (0.8.1)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
@@ -101,6 +99,9 @@ GEM
     listen (3.5.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    loan_creator_web (0.1.2)
+      loan_creator
+      sinatra
     loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -238,6 +239,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.3)
   loan_creator (>= 0.8)!
+  loan_creator_web
   pg
   pry
   puma (~> 5.0)
