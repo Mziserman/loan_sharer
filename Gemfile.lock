@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/CapSens/loan-creator.git
-  revision: e842a1e847d52164448ab3f449827d9e45172678
+  revision: addf1d0dfd9a1413d4735774e4e85e9e29f0ed0c
   specs:
-    loan_creator (0.8.1)
+    loan_creator (0.9.1)
       activesupport
       bigdecimal
 
