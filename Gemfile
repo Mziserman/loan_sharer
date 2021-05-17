@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'loan_creator', '>= 0.8', :github => 'CapSens/loan-creator'
-gem 'loan_creator_web'
+gem 'loan_creator_web', '~> 0.1.3'
 gem 'pry'
 
 group :development, :test do
